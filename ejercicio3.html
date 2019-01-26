@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Winter is Coming</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="shortcut icon" type="image/png" href="image/winter-is-here-wolf-and-raven-version-edward-draganski.jpg"/>
+</head>
+<body>
+    <input type="datetime-local" name="fecha" onchange="contador(event)" >
+    <div id="contenido" ></div>
+        <script>
+        var contenido = document.getElementById("contenido");
+        
+        function Mifuncion(fecha){
+            let inicio = Date.now();
+            const dia= 1000*60*60*24;;
+            const diferencia= fecha - inicio;
+            const dif= diferencia/dia;
+            const difhoras= (dif - Math.floor(dif))*24;
+            const difmin=(difhoras - Math.floor(difhoras))*60;
+            const difseg=(difmin - Math.floor(difmin))*60;
+            contenido.innerText=`${Math.floor(dif)}d :${Math.floor(difhoras)}h :${Math.floor(difmin)}m :${Math.floor(difseg)}s`;
+        }
+        function contador(event) {
+            const fecha = new Date(event.target.value);
+            setInterval(Mifuncion,1000, fecha);
+        }
+        
+        
+        </script>
+    </body>
+</html>
